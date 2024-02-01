@@ -1,11 +1,22 @@
-import React from 'react'
+import React from 'react';
 
-function UserList() {
-  return (
-    <div>
-      userlist
-    </div>
-  )
-}
+const UserList = (props) => {
+    const {user, removeUser} = props
+    const userList = user.map((val) => {
+        return(
+            <div>
+                <div>{val.name}</div>
+                <div>{val.email}</div>
+                <span><button onClick={() => removeUser(val.id)}>Delete</button></span>
+            </div>
+        )
+    })
+    return (
+        <>
+        <div>Contact list</div>
+        <div>{userList}</div>
+        </>
+    );
+};
 
-export default UserList
+export default UserList;

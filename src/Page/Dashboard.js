@@ -1,10 +1,12 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Sidebar from "../Sidebar/Sidebar";
-import About from "../components/About";
 import Logout from "../Login/Logout";
-import AddUser from './User/AddUser'
-import UserList from "./User/UserList";
+import UserPage from "./User/UserPage";
+import Order from "./Order/Order";
+import Booking from "./Booking/Booking";
+import ProductShow from "./Product/ProductShow";
+
 
 const Dashboard = () => {
   return (
@@ -12,10 +14,11 @@ const Dashboard = () => {
       <BrowserRouter>
         <Sidebar>
           <Routes>
-            <Route path="/about" element={<About />}></Route>
             <Route path="/logout" element={<Logout />}></Route>
-            <Route path="/adduser" element={<AddUser />}></Route>
-            <Route path="/userlist" element={<UserList />}></Route>
+            <Route path="/UserPage" element={<UserPage />}></Route>
+            <Route path="/Order" element={<Order />}></Route>
+            <Route path="/Booking" element={<Booking />}></Route>
+            <Route path="/ProductShow" element={<ProductShow />}></Route>
           </Routes>
         </Sidebar>
       </BrowserRouter>

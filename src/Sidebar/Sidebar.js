@@ -6,7 +6,7 @@ import { NavLink } from "react-router-dom";
 import { IoMdArrowDropdown } from "react-icons/io";
 
 function Sidebar({ children }) {
-  let [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const [isSubmenuOpen, setIsSubmenuOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
   const toggleSubmenu = () => setIsSubmenuOpen(!isSubmenuOpen);
@@ -17,18 +17,13 @@ function Sidebar({ children }) {
       icon: <MdDashboard />,
     },
     {
-      path: "/about",
-      name: "About",
-      icon: <MdDashboard />,
-    },
-    {
-      path: "/adduser",
-      name: "AddUser",
-      icon: <MdDashboard />,
-    },
-    {
       path: "/logout",
       name: "Logout",
+      icon: <MdDashboard />,
+    },
+    {
+      path: "/ProductShow",
+      name: "Product",
       icon: <MdDashboard />,
     },
     {
@@ -36,8 +31,23 @@ function Sidebar({ children }) {
       name: "User",
       icon: <MdDashboard />,
       subMenu: [
-        { path: "/adduser", name: "AddUser" },
-        { path: "/userlist", name: "UserList" },
+        { path: "/UserPage", name: "User" }
+      ],
+    },
+    {
+      path: "/order",
+      name: "Order",
+      icon: <MdDashboard />,
+      subMenu: [
+        { path: "/Order", name: "Order" }
+      ],
+    },
+    {
+      path: "/booking",
+      name: "Booking",
+      icon: <MdDashboard />,
+      subMenu: [
+        { path: "/Booking", name: "Booking" }
       ],
     }
   ];
