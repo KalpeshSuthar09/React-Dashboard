@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import uuid4 from "uuid4";
 import AddBooking from "./AddBooking";
 import BookingList from "./BookingList";
+import BookingPage from "./BookingPage";
 
 const Booking = () => {
   const localStorageKey = "order";
@@ -15,7 +16,7 @@ const Booking = () => {
   }, [booking]);
 
   const addBooking = (data) => {
-    setBooking([...booking, { id: uuid4(), data }]);
+    setBooking([...booking, { id: uuid4(), ...data }]);
   };
 
   const removeBooking = (id) => {
@@ -28,6 +29,7 @@ const Booking = () => {
     <>
       <div>User</div>
       <AddBooking addBooking={addBooking} />
+      <BookingPage/>
       <BookingList booking={booking} removeBooking={removeBooking} />
     </>
   );

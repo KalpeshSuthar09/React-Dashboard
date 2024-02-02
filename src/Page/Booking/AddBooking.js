@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+/* import React, { useState } from "react";
 
 export default function AddBooking({ addBooking }) {
   const [bookingData, setBookingData] = useState({
@@ -85,6 +85,100 @@ export default function AddBooking({ addBooking }) {
             type="text"
             onChange={handleChange}
             name="Address"
+            id="address"
+            placeholder="Enter your Address"
+            value={bookingData.address}
+          />
+        </div>
+      </form>
+
+      <button className="btn" onClick={handleAdd}>
+        Add Booking
+      </button>
+    </div>
+  );
+}
+ */
+import React, { useState } from "react";
+
+export default function AddBooking({ addBooking }) {
+  const [bookingData, setBookingData] = useState({
+    name: "",
+    email: "",
+    number: "",
+    address: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setBookingData({ ...bookingData, [name]: value });
+  };
+
+  const handleAdd = () => {
+    if (
+      bookingData.name === "" ||
+      bookingData.email === "" ||
+      bookingData.number === "" ||
+      bookingData.address === ""
+    ) {
+      alert("Please fill all the details");
+      return;
+    }
+    addBooking({
+      data: { ...bookingData },
+      serialNumber: null,
+      orderNumber: generateRandomOrderNumber(),
+    });
+    setBookingData({ name: "", email: "", number: "", address: "" });
+  };
+
+  const generateRandomOrderNumber = () => {
+    return Math.floor(100000 + Math.random() * 900000);
+  };
+
+  return (
+    <div>
+      <div className="heading">Add Booking</div>
+      <form>
+        <div className="input-box">
+          <label htmlFor="name">Name</label>
+          <input
+            type="text"
+            value={bookingData.name}
+            onChange={handleChange}
+            placeholder="Enter name"
+            name="name"
+            id="name"
+          />
+        </div>
+        <div className="input-box">
+          <label htmlFor="email">Email</label>
+          <input
+            type="email"
+            value={bookingData.email}
+            onChange={handleChange}
+            name="email"
+            id="email"
+            placeholder="Enter email"
+          />
+        </div>
+        <div className="input-box">
+          <label htmlFor="number">Number</label>
+          <input
+            type="number"
+            onChange={handleChange}
+            name="number"
+            id="number"
+            placeholder="Enter phone number"
+            value={bookingData.number}
+          />
+        </div>
+        <div className="input-box">
+          <label htmlFor="address">Address</label>
+          <input
+            type="text"
+            onChange={handleChange}
+            name="address"
             id="address"
             placeholder="Enter your Address"
             value={bookingData.address}

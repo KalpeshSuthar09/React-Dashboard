@@ -17,7 +17,7 @@ const UserPage = () => {
   }, [user]);
 
   const addUser = (data) => {
-    setUser([...user, { id: uuid4(), data }]);
+    setUser([...user, { id: uuid4(), ...data }]);
   };
 
   const removeUser = (id) => {

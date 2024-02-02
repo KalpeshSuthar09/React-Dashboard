@@ -1,53 +1,82 @@
-.card-container{
-    display: grid;
-    grid-template-columns: repeat(4, 300px);
-    gap: 30px;
-    margin-top: 30px;
-    margin-left: 20rem;
-    padding: 10px 20px;
+.container{
     width: 100%;
-}
-
-.card{
-    width: 320px;
-    overflow: hidden;
-    height: 400px;
-    border: 2px solid #ededed;
-    margin-top: 20px;
-    cursor: pointer;
-    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-}
-
-.card-img{
-    width: 13rem;
-    margin-bottom: 1rem;
-
-}
-
-.card-title{
-    margin-bottom: 1rem;
-}
-
-.card-reviews{
-    margin-bottom: 1rem;
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 30px;
+    padding: 10px 20px;
 }
 
-.rating-start{
-    color: #d5ab55;
-}
-
-.total-reviews{
-    font-size: 0.9rem;
+.container .box{
+    width: 300px;
+    height: 400px;
+    overflow: hidden;
+    margin-top: 20px;
+    padding: 10px 10px;
     margin-left: 10px;
 }
 
-.card-price{
-    display: flex;
-    justify-content: space-around;
+.container .box .content{
     align-items: center;
+    max-width: 100%;
+    height: auto;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
-.bag-icon{
-    color: #535353;
+.container .box .content .img-box img{
+    width: 250px;
+    height: 250px;
+    
+}
+
+.container .box .content .detail .info{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.container .box .content .detail .info h3{
+    color: black;
+    text-transform: uppercase;
+    font-weight: 200;
+}
+
+.container .box .content .detail button{
+    margin-top: 30px;
+    margin-left: 35px;
+    padding: 10px 30px;
+    border: none;
+    outline: none;
+    color: #111;
+    background-color: rebeccapurple;
+    cursor: pointer;
+}
+
+.detail-container{
+    position: absolute;
+    z-index: 1;
+    align-items: center;
+    width: 500px;
+    background-color: red;
+    margin-left: 30%;
+    margin-top: 20%;
+}
+
+
+.detail-container .detail-content{
+    max-width: 100%;
+}
+
+.detail-container .detail-content .detail-info{
+    display: flex;
+    justify-content: space-between;
+}
+
+.detail-container .detail-content .detail-info .img-box img{
+    width: 250px;
+    height: 250px;
+}
+
+.detail-container .detail-content .detail-info .product-detail{
+    margin-left: 30px;
 }

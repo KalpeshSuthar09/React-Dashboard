@@ -1,5 +1,7 @@
-.container {
+.containers {
     display: flex;
+    height: 100vh;
+    position: fixed;
 }
 
 main {
@@ -8,12 +10,15 @@ main {
 }
 
 .sidebar {
-    background-color: #0093E9;
-    background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+    background: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
     color: #fff;
     height: 100vh;
     width: 300px;
-    transition: all 0.5s;
+    transition: transform 0.5s ease-in-out, width 0.5s ease-in-out;
+}
+
+.sidebar-expanded {
+    width: 400px;
 }
 
 .top-section {
@@ -36,14 +41,13 @@ main {
     display: flex;
     color: #fff;
     padding: 10px 20px;
-    gap: 15px;
-    transition: all 0.5s;
+    gap: 10px;
+    transition: background-color 0.5s, color 0.5s;
 }
 
 .link:hover {
     background-color: aqua;
     color: #111;
-    transition: all 0.5s;
 }
 
 .link.active {
@@ -54,14 +58,13 @@ main {
     font-size: 20px;
 }
 
-
-.btn{
+.btn {
     border: none;
     outline: none;
     cursor: pointer;
 }
 
-.dropdown{
+.dropdown {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -70,9 +73,20 @@ main {
     padding: 10px 0;
 }
 
-
-.dropdown .btn-drop{
+.dropdown .btn-drop {
     background: transparent;
     border: none;
     outline: none;
+}
+
+/* Animation for sidebar */
+.sidebar-enter {
+    opacity: 0;
+    transform: translateX(-100%);
+}
+
+.sidebar-enter.active {
+    opacity: 1;
+    transform: translateX(0%);
+    transition: opacity 0.5s, transform 0.5s ease-in-out;
 }

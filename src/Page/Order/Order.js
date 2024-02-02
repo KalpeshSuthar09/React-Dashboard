@@ -15,7 +15,7 @@ const Order = () => {
   }, [order]);
 
   const addOrder = (data) => {
-    setOrder([...order, { id: uuid4(), data }]);
+    setOrder([...order, { id: uuid4(), ...data }]);
   };
 
   const removeOrder = (id) => {
