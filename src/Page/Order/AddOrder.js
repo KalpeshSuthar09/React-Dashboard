@@ -101,6 +101,7 @@ export default function AddOrder({ addOrder }) {
  */
 import React, { useState } from "react";
 
+
 export default function AddOrder({ addOrder }) {
   const [orderData, setOrderData] = useState({
     name: "",
@@ -137,7 +138,7 @@ export default function AddOrder({ addOrder }) {
   };
 
   return (
-    <div>
+    <div className="container">
       <div className="heading">Add Order</div>
       <form>
         <div className="input-box">

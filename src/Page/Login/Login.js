@@ -1,7 +1,11 @@
+
+
 import React from "react";
 import { useState, useEffect } from "react";
-import Dashboard from "../Pages/Dashboard";
 import "./login.css";
+import Dashboard  from "../Dashboard";
+
+
 
 function Login() {
   const initialValues = { email: "", password: "" };
@@ -33,10 +37,15 @@ function Login() {
     setFormErrors(validate(formValues));
     setIsSubmit(true);
 
-    /* if (userType === "Admin" && secretKey !== "Kalpesh") {
+    if (userType === "Admin" && secretKey !== "Kalpesh") {
       e.preventDefault();
       alert("Invalid Admin");
-    } */
+    }
+
+    if (userType === "Partner" && secretKey !== "Kalpesh123") {
+      e.preventDefault();
+      alert("Invalid Partner");
+    }
   };
 
   const validate = (values) => {
@@ -58,10 +67,11 @@ function Login() {
   };
   return (
     <div className="container">
-      {showHome ? (
-      <Dashboard />
-    ) : (
-      <div>
+      {
+        showHome ? (
+        <Dashboard/>
+        ) : (
+          <div>
         {show && Object.keys(formErrors).length === 0 && isSubmit ? (
           <div className="message success">Login Successfully</div>
         ) : (
@@ -81,6 +91,13 @@ function Login() {
                 <input
                   type="radio"
                   name="UserType"
+                  value="Partner"
+                  onChange={(e) => setUserType(e.target.value)}
+                />{" "}
+                Partner
+                <input
+                  type="radio"
+                  name="UserType"
                   value="Admin"
                   onChange={(e) => setUserType(e.target.value)}
                 />{" "}
@@ -88,7 +105,18 @@ function Login() {
               </div>
               {userType === "Admin" ? (
                 <div className="field">
-                  <label htmlFor="">Secret Key</label>
+                  <label htmlFor="">Admin Key</label>
+                  <input
+                    type="text"
+                    name="key"
+                    placeholder="Key"
+                    onChange={handleChange}
+                  />
+                </div>
+              ) : null}
+              {userType === "Partner" ? (
+                <div className="field">
+                  <label htmlFor="">Partner Key</label>
                   <input
                     type="text"
                     name="key"
@@ -125,7 +153,8 @@ function Login() {
           </form>
         )}
       </div>
-    )}
+        )
+      }
     </div>
   );
 }
