@@ -1,19 +1,13 @@
-
-
 import React from "react";
 import { useState, useEffect } from "react";
-import "./login.css";
-import Dashboard  from "../Dashboard";
-
-
+// import "./login.css";
+import AddUser from "../User/AddUser";
 
 function Login() {
   const initialValues = { email: "", password: "" };
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
-  const [showHome, setShowHome] = useState(false);
-  const [show, setShow] = useState(false);
   const [userType, setUserType] = useState("");
   const [secretKey, setSecretKey] = useState("");
 
@@ -27,8 +21,6 @@ function Login() {
     if (Object.keys(formErrors).length === 0 && isSubmit) {
       console.log(formValues);
       localStorage.setItem("userData", JSON.stringify(formValues));
-      setShowHome(true);
-      setShow(true);
     }
   }, [formErrors, isSubmit, formValues]);
 
@@ -45,6 +37,18 @@ function Login() {
     if (userType === "Partner" && secretKey !== "Kalpesh123") {
       e.preventDefault();
       alert("Invalid Partner");
+    }
+
+    // Add logic to check if the entered email and password match with the user data from AddUser component
+    const storedUserData = JSON.parse(localStorage.getItem("userData"));
+    if (
+      storedUserData &&
+      storedUserData.email === formValues.email &&
+      storedUserData.password === formValues.password
+    ) {
+      alert("Login Successful");
+    } else {
+      alert("Invalid Login Credentials");
     }
   };
 
@@ -66,95 +70,83 @@ function Login() {
     return errors;
   };
   return (
-    <div className="container">
-      {
-        showHome ? (
-        <Dashboard/>
-        ) : (
-          <div>
-        {show && Object.keys(formErrors).length === 0 && isSubmit ? (
-          <div className="message success">Login Successfully</div>
-        ) : (
-          <form onSubmit={handleSubmit}>
-            <div className="divider"></div>
-            <h1 className="form-title">Login form</h1>
-            <div className="form">
-              <div className="radio">
-                Register As
-                <input
-                  type="radio"
-                  name="UserType"
-                  value="User"
-                  onChange={(e) => setUserType(e.target.value)}
-                />{" "}
-                User
-                <input
-                  type="radio"
-                  name="UserType"
-                  value="Partner"
-                  onChange={(e) => setUserType(e.target.value)}
-                />{" "}
-                Partner
-                <input
-                  type="radio"
-                  name="UserType"
-                  value="Admin"
-                  onChange={(e) => setUserType(e.target.value)}
-                />{" "}
-                Admin
-              </div>
-              {userType === "Admin" ? (
-                <div className="field">
-                  <label htmlFor="">Admin Key</label>
-                  <input
-                    type="text"
-                    name="key"
-                    placeholder="Key"
-                    onChange={handleChange}
-                  />
-                </div>
-              ) : null}
-              {userType === "Partner" ? (
-                <div className="field">
-                  <label htmlFor="">Partner Key</label>
-                  <input
-                    type="text"
-                    name="key"
-                    placeholder="Key"
-                    onChange={handleChange}
-                  />
-                </div>
-              ) : null}
-
-              <div className="field">
-                <label htmlFor="">Email</label>
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Email"
-                  value={formValues.email}
-                  onChange={handleChange}
-                />
-              </div>
-              <p>{formErrors.email}</p>
-              <div className="field">
-                <label htmlFor="">Password</label>
-                <input
-                  type="password"
-                  name="password"
-                  placeholder="Password"
-                  value={formValues.password}
-                  onChange={handleChange}
-                />
-              </div>
-              <p>{formErrors.password}</p>
-              <button className="button">Login</button>
+    <div className="form">
+      <form onSubmit={handleSubmit}>
+        <div className="divider"></div>
+        <h1 className="form-title">Login form</h1>
+        <div className="form">
+          <div className="radio">
+            Register As
+            <input
+              type="radio"
+              name="UserType"
+              value="User"
+              onChange={(e) => setUserType(e.target.value)}
+            />{" "}
+            User
+            <input
+              type="radio"
+              name="UserType"
+              value="Partner"
+              onChange={(e) => setUserType(e.target.value)}
+            />{" "}
+            Partner
+            <input
+              type="radio"
+              name="UserType"
+              value="Admin"
+              onChange={(e) => setUserType(e.target.value)}
+            />{" "}
+            Admin
+          </div>
+          {userType === "Admin" ? (
+            <div className="field">
+              <label htmlFor="">Admin Key</label>
+              <input
+                type="text"
+                name="key"
+                placeholder="Key"
+                onChange={handleChange}
+              />
             </div>
-          </form>
-        )}
-      </div>
-        )
-      }
+          ) : null}
+          {userType === "Partner" ? (
+            <div className="field">
+              <label htmlFor="">Partner Key</label>
+              <input
+                type="text"
+                name="key"
+                placeholder="Key"
+                onChange={handleChange}
+              />
+            </div>
+          ) : null}
+
+          <div className="field">
+            <label htmlFor="">Email</label>
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              value={formValues.email}
+              onChange={handleChange}
+            />
+          </div>
+          <p>{formErrors.email}</p>
+          <div className="field">
+            <label htmlFor="">Password</label>
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              value={formValues.password}
+              onChange={handleChange}
+            />
+          </div>
+          <p>{formErrors.password}</p>
+          <button className="button">Login</button>
+        </div>
+      </form>
     </div>
   );
 }

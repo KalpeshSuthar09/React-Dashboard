@@ -10,6 +10,7 @@ const Navbar = () => {
       </Link>
       <ul>
         <CustomLink to="/logout">Logout</CustomLink>
+        <CustomLink to="/Login">Login</CustomLink>
         <CustomLink to="/Order">Order</CustomLink>
         <CustomLink to="/Booking">Booking</CustomLink>
         <CustomLink to="/Product">Product</CustomLink>

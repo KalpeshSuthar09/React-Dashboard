@@ -24,7 +24,7 @@ const UserList = (props) => {
 export default UserList; */
 
 import React, { useState } from "react";
-import "./userpage.css";
+// import "./userpage.css";
 
 const UserList = ({ user, removeUser }) => {
   const itemsPerPage = 5; // Set the number of items to display per page
@@ -54,7 +54,7 @@ const UserList = ({ user, removeUser }) => {
 
   const userList = currentItems.map((val) => (
     <tr key={val.id}>
-      <td>{val.name}</td>
+      <td>{val.password}</td>
       <td>{val.email}</td>
       <td>
         <button onClick={() => removeUser(val.id)}>Delete</button>
@@ -69,7 +69,7 @@ const UserList = ({ user, removeUser }) => {
       <table>
         <thead>
           <tr>
-            <th>Name</th>
+            <th>Password</th>
             <th>Email</th>
             <th>Action</th>
           </tr>

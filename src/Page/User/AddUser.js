@@ -1,25 +1,27 @@
 import React from "react";
 import { useState } from "react";
-import './userpage.css'
+// import "./userpage.css";
 
-const AddUser = ({addUser}) => {
-  const [userData, setUserData] = useState({ name: "", email: "" });
+const AddUser = ({ addUser }) => {
+  const [userData, setUserData] = useState({ email: "", password: "" });
 
   const handleChange = (e) => {
-    if (e.target.name === "name") {
+    /* if (e.target.password === "password") {
       setUserData({ ...userData, name: e.target.value });
     } else {
       setUserData({ ...userData, email: e.target.value });
-    }
+    } */
+    const { name, value } = e.target;
+    setUserData({ ...userData, [name]: value });
   };
 
   const handleAdd = () => {
-    if (userData.name === "" || userData.email === "") {
+    if (userData.email === "" || userData.password === "") {
       alert("Please fill the details");
       return;
     }
-    addUser(userData)
-    setUserData({name: "", email: ""})
+    addUser(userData);
+    setUserData({email: "", password: "" });
   };
 
   return (
@@ -31,19 +33,19 @@ const AddUser = ({addUser}) => {
         <form>
           <div className="input-box">
             <input
-              type="text"
-              placeholder="Enter Name"
-              name="name"
-              value={userData.name}
+              type="email"
+              name="email"
+              placeholder="Enter Email"
+              value={userData.email}
               onChange={handleChange}
             />
           </div>
           <div className="input-box">
             <input
-              type="email"
-              name="email"
-              placeholder="Enter Email"
-              value={userData.email}
+              type="text"
+              placeholder="Enter Password"
+              name="password"
+              value={userData.password}
               onChange={handleChange}
             />
           </div>
