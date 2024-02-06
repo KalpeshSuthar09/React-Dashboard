@@ -4,9 +4,9 @@ import uuid4 from "uuid4";
 import AddUser from "./AddUser";
 import UserList from "./UserList";
 
-
-
 const UserPage = () => {
+  const [showModel, setShowModel] = useState(false);
+
   const localStorageKey = "user";
   const [user, setUser] = useState(() => {
     return JSON.parse(localStorage.getItem(localStorageKey)) || [];
@@ -25,18 +25,22 @@ const UserPage = () => {
       return val.id !== id;
     });
     setUser(updatedList);
-  }; 
+  };
   return (
-
-    
-    <>
-    <div>User</div>
-        <AddUser addUser={addUser} />  
-        <UserList user={user} removeUser={removeUser} /> 
-    </>
-
-
-    
+    <div>
+      <div className="flex flex-col">
+      <button
+        className=" place-self-end flex items-center gap-1 bg-gray-800 text-white py-2 px-4 rounded-md hover:bg-gray-700 transition duration-300 ease-in-out transform hover:scale-110"
+        onClick={() => setShowModel(true)}
+      >
+        Add User
+      </button>
+      {showModel && (
+        <AddUser onClose={() => setShowModel(false)} addUser={addUser} />
+      )}
+      <UserList user={user} removeUser={removeUser} />
+      </div>
+    </div>
   );
 };
 

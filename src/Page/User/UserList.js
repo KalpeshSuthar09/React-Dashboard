@@ -29,29 +29,29 @@ const UserList = ({ user, removeUser }) => {
 
   const userList = currentItems.map((val) => (
     <tr key={val.id}>
-      <td>{val.email}</td>
-      <td>{val.password}</td>
-      <td>
-        <button onClick={() => removeUser(val.id)}>Delete</button>
+      <td className="text-left bg-white p-3">{val.email}</td>
+      <td className="text-left bg-gray-100 p-3">{val.password}</td>
+      <td className="p-3 bg-white">
+        <button className=" bg-[#002D74] rounded-xl text-white py-2 hover:scale-105 duration-300 items-center w-32" onClick={() => removeUser(val.id)}>Delete</button>
       </td>
     </tr>
   ));
 
   return (
     <>
-      <div className="details">
-      <div>Contact list</div>
-      <table>
-        <thead>
-          <tr>
-            <th>Email</th>
-            <th>Password</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>{userList}</tbody>
-      </table>
-      {renderPagination()}
+      <div className="details p-1 h-screen bg-gray-100">
+        <div className="text-xl mb-2 text-center text-slate-600 hover:text-sky-400">Contact list</div>
+        <table className="w-full">
+          <thead className="bg-gray-50 border-b-2 border-gray-200">
+            <tr>
+              <th className="p-3 text-sm font-semibold tracking-wide text-left w-1/3">Email</th>
+              <th className="p-3 text-sm font-semibold tracking-wide text-left w-1/3">Password</th>
+              <th className="p-3 text-sm font-semibold tracking-wide text-left w-1/3">Action</th>
+            </tr>
+          </thead>
+          <tbody>{userList}</tbody>
+        </table>
+        {renderPagination()}
       </div>
     </>
   );

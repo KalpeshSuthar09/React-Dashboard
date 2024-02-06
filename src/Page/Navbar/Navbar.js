@@ -9,12 +9,13 @@ const Navbar = () => {
         Navbar
       </Link>
       <ul>
-        {/* <CustomLink to="/logout">Logout</CustomLink>
+        <CustomLink to="/logout">Logout</CustomLink>
         <CustomLink to="/Login">Login</CustomLink>
         <CustomLink to="/Order">Order</CustomLink>
         <CustomLink to="/Booking">Booking</CustomLink>
-        <CustomLink to="/Product">Product</CustomLink>
-        <CustomLink to="/UserPage">User</CustomLink> */}
+        <CustomLink to="/UserPage">User</CustomLink>
+       <CustomLink to="/Product">Product</CustomLink>
+         
         <CustomLink to="/CurrentUser">CurrentUser</CustomLink>
       </ul>
     </nav>

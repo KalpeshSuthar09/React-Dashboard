@@ -7,8 +7,8 @@ function Login() {
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
-  const [userType, setUserType] = useState("");
-  const [secretKey, setSecretKey] = useState("");
+  /*  const [userType, setUserType] = useState("");
+  const [secretKey, setSecretKey] = useState(""); */
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -23,13 +23,12 @@ function Login() {
     }
   }, [formErrors, isSubmit, formValues]);
 
-
   const handleSubmit = (e) => {
     e.preventDefault();
     setFormErrors(validate(formValues));
     setIsSubmit(true);
 
-    if (userType === "Admin" && secretKey !== "Kalpesh") {
+    /* if (userType === "Admin" && secretKey !== "Kalpesh") {
       e.preventDefault();
       alert("Invalid Admin");
     }
@@ -37,7 +36,7 @@ function Login() {
     if (userType === "Partner" && secretKey !== "Kalpesh123") {
       e.preventDefault();
       alert("Invalid Partner");
-    }
+    } */
 
     //check if the entered email and password match with the user data from AddUser component
     const storedUserData = JSON.parse(localStorage.getItem("userData"));
@@ -70,12 +69,14 @@ function Login() {
     return errors;
   };
   return (
-    <div className="form">
-      <form onSubmit={handleSubmit}>
-        <div className="divider"></div>
-        <h1 className="form-title">Login form</h1>
-        <div className="form">
-          <div className="radio">
+    <section className="bg-gray-50 min-h-screen flex items-center justify-center shadow-md">
+      <div className=" flex shadow-lg rounded-2xl max-w-3xl p-5 ">
+        <div className="left-content sm:w-1/2 px-16">
+          <h1 className="form-title font-bold text-2xl text-[#002D74]">
+            Login form
+          </h1>
+          <form onSubmit={handleSubmit} className="flex flex-col gap-4 ">
+            {/* <div className="radio">
             Register As
             <input
               type="radio"
@@ -98,8 +99,8 @@ function Login() {
               onChange={(e) => setUserType(e.target.value)}
             />{" "}
             Admin
-          </div>
-          {userType === "Admin" ? (
+          </div> */}
+            {/* {userType === "Admin" ? (
             <div className="field">
               <label htmlFor="key">Admin Key</label>
               <input
@@ -120,34 +121,46 @@ function Login() {
                 onChange={handleChange}
               />
             </div>
-          ) : null}
+          ) : null} */}
 
-          <div className="field">
-            <label htmlFor="email">Email</label>
-            <input
-              type="email"
-              name="email"
-              placeholder="Email"
-              value={formValues.email}
-              onChange={handleChange}
-            />
-          </div>
-          <p>{formErrors.email}</p>
-          <div className="field">
-            <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              name="password"
-              placeholder="Password"
-              value={formValues.password}
-              onChange={handleChange}
-            />
-          </div>
-          <p>{formErrors.password}</p>
-          <button className="button">Login</button>
+            <div className="field ">
+              <label htmlFor="email">Email</label>
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                value={formValues.email}
+                onChange={handleChange}
+                className="p-2 rounded-xl border w-full"
+              />
+            </div>
+            <p className="text-rose-500">{formErrors.email}</p>
+            <div className="field">
+              <label htmlFor="password">Password</label>
+              <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                value={formValues.password}
+                onChange={handleChange}
+                className="p-2 rounded-xl border w-full"
+              />
+            </div>
+            <p className="text-rose-500">{formErrors.password}</p>
+            <button className="bg-[#002D74] rounded-xl text-white py-2 hover:scale-105 duration-300">
+              Login
+            </button>
+          </form>
         </div>
-      </form>
-    </div>
+        <div className="right-content w-1/2 sm:block hidden">
+          <img
+            src="https://cdn.dribbble.com/userupload/12872997/file/original-a8529fc0f3a6a0dd5471a67645b67625.png?resize=752x"
+            alt="Image"
+            className="rounded-2xl shadow-md"
+          />
+        </div>
+      </div>
+    </section>
   );
 }
 
