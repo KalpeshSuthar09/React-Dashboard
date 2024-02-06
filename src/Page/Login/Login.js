@@ -1,6 +1,5 @@
 import React from "react";
 import { useState, useEffect } from "react";
-// import "./login.css";
 import AddUser from "../User/AddUser";
 
 function Login() {
@@ -24,6 +23,7 @@ function Login() {
     }
   }, [formErrors, isSubmit, formValues]);
 
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setFormErrors(validate(formValues));
@@ -39,7 +39,7 @@ function Login() {
       alert("Invalid Partner");
     }
 
-    // Add logic to check if the entered email and password match with the user data from AddUser component
+    //check if the entered email and password match with the user data from AddUser component
     const storedUserData = JSON.parse(localStorage.getItem("userData"));
     if (
       storedUserData &&
@@ -101,7 +101,7 @@ function Login() {
           </div>
           {userType === "Admin" ? (
             <div className="field">
-              <label htmlFor="">Admin Key</label>
+              <label htmlFor="key">Admin Key</label>
               <input
                 type="text"
                 name="key"
@@ -112,7 +112,7 @@ function Login() {
           ) : null}
           {userType === "Partner" ? (
             <div className="field">
-              <label htmlFor="">Partner Key</label>
+              <label htmlFor="key">Partner Key</label>
               <input
                 type="text"
                 name="key"
@@ -123,7 +123,7 @@ function Login() {
           ) : null}
 
           <div className="field">
-            <label htmlFor="">Email</label>
+            <label htmlFor="email">Email</label>
             <input
               type="email"
               name="email"
@@ -134,7 +134,7 @@ function Login() {
           </div>
           <p>{formErrors.email}</p>
           <div className="field">
-            <label htmlFor="">Password</label>
+            <label htmlFor="password">Password</label>
             <input
               type="password"
               name="password"

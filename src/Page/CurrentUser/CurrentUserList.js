@@ -1,7 +1,7 @@
-/* import React, { useState } from "react";
+import React, { useState } from "react";
 
 
-const CurrentUserList = ({ currentUser, removeCurrentUser, approveCurrentUser }) => {
+const CurrentUserList = ({ currentUser, removeCurrentUser, approveCurrentUser, onLoginSuccess }) => {
   const itemsPerPage = 5; // Set the number of items to display per page
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -35,10 +35,10 @@ const CurrentUserList = ({ currentUser, removeCurrentUser, approveCurrentUser })
       <td>
         <button
           onClick={() => approveCurrentUser(currentUser.id)}
-          disabled={currentUser.isApproved}
+          enable={currentUser.isApproved}
         >
           Approve
-        </button>
+        </button> 
         <button onClick={() => removeCurrentUser(val.id)}>Delete</button>
       </td>
     </tr>
@@ -66,6 +66,6 @@ const CurrentUserList = ({ currentUser, removeCurrentUser, approveCurrentUser })
 };
 
 export default CurrentUserList;
- */
+
 
 
