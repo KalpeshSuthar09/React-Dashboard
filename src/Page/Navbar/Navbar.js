@@ -1,6 +1,6 @@
 import React from "react";
 import "./navbar.css";
-import { Link, useMatch, useResolvedPath } from "react-router-dom";
+import { Link} from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -9,27 +9,19 @@ const Navbar = () => {
         Navbar
       </Link>
       <ul>
-        <CustomLink to="/logout">Logout</CustomLink>
-        <CustomLink to="/Login">Login</CustomLink>
-        <CustomLink to="/Order">Order</CustomLink>
-        <CustomLink to="/Booking">Booking</CustomLink>
-        <CustomLink to="/UserPage">User</CustomLink>
-       <CustomLink to="/Product">Product</CustomLink>
-         
-        <CustomLink to="/CurrentUser">CurrentUser</CustomLink>
+          <Link to="/logout">Logout</Link>
+          <Link to="/Order">Order</Link>
+          <Link to="/Booking">Booking</Link>
+          <Link to="/UserPage">User</Link>
+         <Link to="/Product">Product</Link> 
+          <Link to="/CurrentUser">CurrentUser</Link>
+          <Link to="/Login">Login</Link>
+      
       </ul>
     </nav>
   );
 };
 
-function CustomLink({ to, children, ...props }) {
-    const resolvedPath = useResolvedPath(to)
-    const isActive = useMatch({path: resolvedPath.pathname, end: true})
-  return (
-    <li className={isActive ? "active" : ""}>
-      <Link to={to} {...props}>{children}</Link>
-    </li>
-  );
-}
+
 
 export default Navbar;

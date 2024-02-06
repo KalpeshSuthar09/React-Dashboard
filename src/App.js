@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import UserPage from "./Page/User/UserPage";
 import Login from "./Page/Login/Login";
 //import CurrentUser from './Page/CurrentUser/CurrentUser'
+import PrivateRoute from "./PrivateRoute";
 
 
 function App() {
@@ -17,7 +18,9 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login/>}></Route>
         <Route path="/logout" element={<Logout />}></Route>
-        <Route path="/UserPage" element={<UserPage />}></Route>
+        <Route path="/UserPage" element={<PrivateRoute>
+          <UserPage />
+        </PrivateRoute>}></Route>
         {/* <Route path="/Order" element={<Order />}></Route>
         <Route path="/Booking" element={<Booking />}></Route> */}
         {/*  <Route path="/Product" element={<Product />}></Route>

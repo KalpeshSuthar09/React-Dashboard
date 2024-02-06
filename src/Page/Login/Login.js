@@ -27,7 +27,6 @@ function Login() {
     e.preventDefault();
     setFormErrors(validate(formValues));
     setIsSubmit(true);
-
     /* if (userType === "Admin" && secretKey !== "Kalpesh") {
       e.preventDefault();
       alert("Invalid Admin");
@@ -47,7 +46,7 @@ function Login() {
     ) {
       alert("Login Successful");
     } else {
-      alert("Invalid Login Credentials");
+      alert("Error");
     }
   };
 
