@@ -3,6 +3,7 @@ import { useState } from "react";
 import { GiTireIronCross } from "react-icons/gi";
 
 const AddUser = ({ addUser, onClose }) => {
+  // const [userData, setUserData] = useState({ email: "", password: "" });
   const [userData, setUserData] = useState({ email: "", password: "" });
 
   const handleChange = (e) => {

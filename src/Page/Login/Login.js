@@ -1,13 +1,14 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import AddUser from "../User/AddUser";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const initialValues = { email: "", password: "" };
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
-  /*  const [userType, setUserType] = useState("");
+  const navigate = useNavigate();
+  /* const [userType, setUserType] = useState("");
   const [secretKey, setSecretKey] = useState(""); */
 
   const handleChange = (e) => {
@@ -15,39 +16,32 @@ function Login() {
     setFormValues({ ...formValues, [name]: value });
   };
 
+  
+
   useEffect(() => {
     console.log(formErrors);
     if (Object.keys(formErrors).length === 0 && isSubmit) {
       console.log(formValues);
       localStorage.setItem("userData", JSON.stringify(formValues));
+      navigate("/Logout");
     }
-  }, [formErrors, isSubmit, formValues]);
+  }, [formErrors, isSubmit, formValues, navigate]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setFormErrors(validate(formValues));
     setIsSubmit(true);
-    /* if (userType === "Admin" && secretKey !== "Kalpesh") {
-      e.preventDefault();
-      alert("Invalid Admin");
-    }
 
-    if (userType === "Partner" && secretKey !== "Kalpesh123") {
-      e.preventDefault();
-      alert("Invalid Partner");
-    } */
-
-    //check if the entered email and password match with the user data from AddUser component
-    const storedUserData = JSON.parse(localStorage.getItem("userData"));
+    /* const storedUserData = JSON.parse(localStorage.getItem("userData"));
     if (
       storedUserData &&
       storedUserData.email === formValues.email &&
       storedUserData.password === formValues.password
     ) {
-      alert("Login Successful");
+      alert("Login successfully");
     } else {
-      alert("Error");
-    }
+      alert("Invalid Details!");
+    } */
   };
 
   const validate = (values) => {
@@ -76,73 +70,71 @@ function Login() {
           </h1>
           <form onSubmit={handleSubmit} className="flex flex-col gap-4 ">
             {/* <div className="radio">
-            Register As
-            <input
-              type="radio"
-              name="UserType"
-              value="User"
-              onChange={(e) => setUserType(e.target.value)}
-            />{" "}
-            User
-            <input
-              type="radio"
-              name="UserType"
-              value="Partner"
-              onChange={(e) => setUserType(e.target.value)}
-            />{" "}
-            Partner
-            <input
-              type="radio"
-              name="UserType"
-              value="Admin"
-              onChange={(e) => setUserType(e.target.value)}
-            />{" "}
-            Admin
-          </div> */}
-            {/* {userType === "Admin" ? (
-            <div className="field">
-              <label htmlFor="key">Admin Key</label>
+              Register As
               <input
-                type="text"
-                name="key"
-                placeholder="Key"
-                onChange={handleChange}
-              />
-            </div>
-          ) : null}
-          {userType === "Partner" ? (
-            <div className="field">
-              <label htmlFor="key">Partner Key</label>
+                type="radio"
+                name="UserType"
+                value="User"
+                onChange={(e) => setUserType(e.target.value)}
+              />{" "}
+              User
               <input
-                type="text"
-                name="key"
-                placeholder="Key"
-                onChange={handleChange}
-              />
+                type="radio"
+                name="UserType"
+                value="Partner"
+                onChange={(e) => setUserType(e.target.value)}
+              />{" "}
+              Partner
+              <input
+                type="radio"
+                name="UserType"
+                value="Admin"
+                onChange={(e) => setUserType(e.target.value)}
+              />{" "}
+              Admin
             </div>
-          ) : null} */}
+            {userType === "Admin" ? (
+              <div className="field">
+                <input
+                  type="text"
+                  name="key"
+                  placeholder="Key"
+                  onChange={handleChange}
+                />
+              </div>
+            ) : null}
+            {userType === "Partner" ? (
+              <div className="field">
+                <input
+                  type="text"
+                  name="key"
+                  placeholder="Key"
+                  onChange={handleChange}
+                />
+              </div>
+            ) : null} */}
 
             <div className="field ">
-              <label htmlFor="email">Email</label>
+              {/* <label htmlFor="email">Email</label> */}
               <input
                 type="email"
                 name="email"
                 placeholder="Email"
                 value={formValues.email}
-                onChange={handleChange}
                 className="p-2 rounded-xl border w-full"
+                onChange={handleChange}
               />
             </div>
             <p className="text-rose-500">{formErrors.email}</p>
             <div className="field">
-              <label htmlFor="password">Password</label>
+              {/* <label htmlFor="password">Password</label> */}
               <input
                 type="password"
                 name="password"
                 placeholder="Password"
                 value={formValues.password}
-                onChange={handleChange}
                 className="p-2 rounded-xl border w-full"
+                onChange={handleChange}
               />
             </div>
             <p className="text-rose-500">{formErrors.password}</p>
