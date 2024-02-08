@@ -12,9 +12,9 @@ const Navbar = () => {
         <Link to="/Logout">Logout</Link>
         <Link to="/Order">Order</Link>
         <Link to="/Booking">Booking</Link>
+
         <Link to="/Product">Product</Link>
         <Link to="/CurrentUser">CurrentUser</Link>
-        <Link to="/Login">Login</Link>
         <Link to="/UserPage">UserPage</Link>
       </ul>
     </nav>
